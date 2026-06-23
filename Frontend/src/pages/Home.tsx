@@ -40,24 +40,16 @@ const Home = () => {
   ])
 
   return (
-    /* 🎨 මුළු පේජ් එකේම බැක්ග්‍රවුන්ඩ් එක තද කොළ සහ ලා කොළ කලවම් වුණු Vibrant Gradient එකක් කලා */
     <div className="relative min-h-screen bg-linear-to-b from-green-100 via-emerald-100/70 to-green-50 overflow-hidden">
       
-      {/* 🔮 BACKGROUND SHAPES & COLORS (සුදු පාට කැපෙන්න දාපු තද කලර් ශේප්ස් ටික) */}
-      {/* වම් පැත්තේ තද Emerald රවුම */}
       <div className="absolute top-12 -left-20 w-96 h-96 bg-emerald-400/40 rounded-full blur-2xl pointer-events-none"></div>
-      {/* දකුණු පැත්තේ මැදට වෙන්න තද කොළ පාට හැඩතලයක් */}
       <div className="absolute top-1/3 -right-40 w-[500px] h-[500px] bg-green-500/25 rounded-full blur-3xl pointer-events-none"></div>
-      {/* පේජ් එකේ යට හරියට වෙන්න තවත් කැපී පෙනෙන ලස්සන කලර් බ්ලොක් එකක් */}
       <div className="absolute bottom-20 -left-20 w-[600px] h-[600px] bg-emerald-300/30 rounded-full blur-3xl pointer-events-none"></div>
       <div className="absolute bottom-1/3 left-1/3 w-80 h-80 bg-lime-300/20 rounded-full blur-2xl pointer-events-none"></div>
 
-      {/* 📦 CONTENT CONTAINER */}
       <div className="max-w-6xl mx-auto px-4 py-10 space-y-28 relative z-10">
         
-        {/* =========================================================
-            🌟 1️⃣ HERO SECTION (Glassmorphism Look එකක් දුන්නා බැක්ග්‍රවුන්ඩ් එක කැපෙන්න)
-           ========================================================= */}
+       {/* hero section */}
         <div className="relative rounded-3xl overflow-hidden bg-white/70 backdrop-blur-md p-8 md:p-16 flex flex-col md:flex-row items-center justify-between border border-white/60 shadow-lg">
           <div className="absolute top-0 right-0 w-72 h-72 bg-green-300/30 rounded-full blur-3xl pointer-events-none"></div>
           <div className="absolute bottom-0 left-0 w-72 h-72 bg-emerald-300/30 rounded-full blur-3xl pointer-events-none"></div>
@@ -94,9 +86,8 @@ const Home = () => {
           </div>
         </div>
 
-        {/* =========================================================
-            🌿 2️⃣ CATEGORIES SECTION 
-           ========================================================= */}
+       
+       {/* catergory section */}
         <div className="space-y-6">
           <div className="text-center md:text-left">
             <h2 className="text-2xl font-bold text-gray-900 tracking-tight">Explore Categories</h2>
@@ -129,9 +120,7 @@ const Home = () => {
           </div>
         </div>
 
-        {/* =========================================================
-            📚 3️⃣ CARE GUIDES SECTION 
-           ========================================================= */}
+        {/* care guides section */}
         <div id="care-guides" className="space-y-6 scroll-mt-24">
           <div className="text-center md:text-left">
             <h2 className="text-2xl font-bold text-gray-900 tracking-tight">Plant Care Guides</h2>
@@ -170,9 +159,7 @@ const Home = () => {
           </div>
         </div>
 
-        {/* =========================================================
-            🤝 4️⃣ ABOUT US SECTION 
-           ========================================================= */}
+        {/* about us section */}
         <div 
           id="about-us" 
           className="relative rounded-3xl overflow-hidden bg-white/70 backdrop-blur-md p-8 md:p-16 flex flex-col md:flex-row gap-12 items-center border border-white/60 shadow-lg scroll-mt-24"

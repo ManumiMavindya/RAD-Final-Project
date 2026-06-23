@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { PlantModel } from "../models/plantModel";
+import mongoose from "mongoose";
 // import { error } from "node:console";
 
 export const savePlant = async (req: Request, res:Response) =>{
@@ -52,7 +53,7 @@ export const updatePlant = async (req: Request, res: Response) =>{
 export const getAllPlants = async (req: Request, res: Response) =>{
     try{
         const plants = await PlantModel.find();
-        res.status(200).json({ message: "ok", data: plants});
+        res.status(200).json(plants);
     }catch(err){
         console.error(err);
         res.status(500).json({ message: "Failed to retreive plants...", error:err});
@@ -62,13 +63,16 @@ export const getAllPlants = async (req: Request, res: Response) =>{
 export const getPlantByID = async (req: Request, res: Response) => {
   try {
     const { id } = req.params; 
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+            return res.status(400).json({ message: "Invalid ID format" });
+        }
     const plant = await PlantModel.findById(id);
 
     if (!plant) {
       return res.status(404).json({ message: "Plant not found" });
     }
 
-    res.status(200).json({ message: "ok", data: plant });
+    res.status(200).json(plant);
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Failed to fetch plant..!", error: err });
