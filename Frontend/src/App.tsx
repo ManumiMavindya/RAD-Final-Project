@@ -7,6 +7,7 @@ import PlantDetails from "./pages/PlantDetails"
 import Login from "./pages/Login"
 import Register from "./pages/Register"
 import { AuthProvider } from './context/AuthContext';
+import MyAccount from "./pages/MyAccount";
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/" element={<Home />} />
             <Route path="/shop" element={<ShopAll />} />
-            <Route path="/plant/:id" element={<PlantDetails />} />        
+            <Route path="/plant/:id" element={<PlantDetails />} />   
+            <Route path="/my-account" element={<MyAccount />} />     
         </Routes>
       </Router>
     </AuthProvider>

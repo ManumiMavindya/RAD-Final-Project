@@ -155,86 +155,63 @@ export const updateOrderDetails = async (req: AuthRequest, res: Response) => {
 export const downloadInvoice = async (req: Request, res: Response) => {
   try {
     const orderId = req.params.id;
-
-    const order = await OrderModel.findById(orderId).populate("items.plantId");
+    const order = await OrderModel.findById(orderId);
 
     if (!order) {
       return res.status(404).json({ message: "Order not found!" });
     }
 
     res.setHeader("Content-Type", "application/pdf");
-    res.setHeader(
-      "Content-Disposition",
-      `attachment; filename=Invoice-${order.invoiceNumber}.pdf`
-    );
+    res.setHeader("Content-Disposition", `attachment; filename=Invoice-${order.invoiceNumber}.pdf`);
 
-    const doc = new PDFDocument({ margin: 50 });
-
+    const doc = new PDFDocument({ margin: 50, size: 'A4' });
     doc.pipe(res);
 
-    doc.fillColor("#1b5e20").fontSize(28).text("GreenMart", 50, 50, { bold: true }); 
-    doc.fillColor("#666666").fontSize(10).text("The Ultimate Plant Nursery", 50, 85);
+    // 1. Header Section
+    doc.fillColor("#1b5e20").fontSize(30).font('Helvetica-Bold').text("GreenMart", 50, 50);
+    doc.fillColor("#666666").fontSize(10).font('Helvetica').text("123, Plant Avenue, Colombo", 50, 85);
     
-    doc.fillColor("#333333").fontSize(11).text(`Invoice No: ${order.invoiceNumber}`, 350, 55, { align: "right" });
-    doc.text(`Date: ${new Date(order.createdAt).toLocaleDateString()}`, 350, 70, { align: "right" });
-    doc.text(`Status: ${order.status.toUpperCase()}`, 350, 85, { align: "right" });
+    doc.fillColor("#333333").fontSize(12).font('Helvetica-Bold').text(`INVOICE: ${order.invoiceNumber}`, 400, 50, { align: "right" });
+    doc.fontSize(10).font('Helvetica').text(`Date: ${new Date(order.createdAt).toLocaleDateString()}`, 400, 65, { align: "right" });
 
-    doc.moveTo(50, 110).lineTo(550, 110).strokeColor("#e0e0e0").stroke();
+    // 2. Billing Info
+    doc.moveDown(2);
+    doc.fillColor("#1b5e20").fontSize(14).font('Helvetica-Bold').text("BILL TO:");
+    doc.fillColor("#424242").fontSize(11).font('Helvetica').text(`${order.customerName}`);
+    doc.text(`${order.shippingAddress}`);
+    doc.text(`Tel: ${order.phone}`);
 
-    doc.fillColor("#1b5e20").fontSize(12).text("BILL TO:", 50, 130, { bold: true });
-    doc.fillColor("#424242").fontSize(10);
-    doc.text(`Name      : ${order.customerName}`, 50, 150);
-    doc.text(`Address   : ${order.shippingAddress}`, 50, 165);
-    doc.text(`Phone     : ${order.phone}`, 50, 180);
+    // 3. Table Header
+    let y = 220;
+    doc.rect(50, y, 500, 25).fill("#1b5e20");
+    doc.fillColor("#ffffff").fontSize(11).font('Helvetica-Bold');
+    doc.text("Item Name", 60, y + 7);
+    doc.text("Qty", 320, y + 7, { width: 50, align: "center" });
+    doc.text("Price", 390, y + 7, { width: 70, align: "right" });
+    doc.text("Total", 470, y + 7, { width: 70, align: "right" });
 
-    let currentY = 220;
-
-    doc.rect(50, currentY, 500, 25).fill("#1b5e20");
-    
-    doc.fillColor("#ffffff").fontSize(10);
-    doc.text("Item Name", 60, currentY + 7, { width: 250 });
-    doc.text("Qty", 320, currentY + 7, { width: 50, align: "center" });
-    doc.text("Unit Price", 390, currentY + 7, { width: 70, align: "right" });
-    doc.text("Total (LKR)", 470, currentY + 7, { width: 70, align: "right" });
-
-    currentY += 25; 
-
-    order.items.forEach((item: any, index: number) => {
-      if (index % 2 === 0) {
-        doc.rect(50, currentY, 500, 22).fill("#f9f9f9");
-      }
-
-      doc.fillColor("#424242").fontSize(10);
-      doc.text(item.name, 60, currentY + 6, { width: 250 });
-      doc.text(item.quantity.toString(), 320, currentY + 6, { width: 50, align: "center" });
-      doc.text(`Rs. ${item.price}.00`, 390, currentY + 6, { width: 70, align: "right" });
-      doc.text(`Rs. ${item.quantity * item.price}.00`, 470, currentY + 6, { width: 70, align: "right" });
-
-      currentY += 22;
+    // 4. Table Rows
+    y += 35;
+    order.items.forEach((item: any) => {
+      doc.fillColor("#333333").fontSize(10).font('Helvetica');
+      doc.text(item.name, 60, y);
+      doc.text(item.quantity.toString(), 320, y, { width: 50, align: "center" });
+      doc.text(`Rs.${item.price}.00`, 390, y, { width: 70, align: "right" });
+      doc.text(`Rs.${item.quantity * item.price}.00`, 470, y, { width: 70, align: "right" });
+      y += 25;
     });
 
-    doc.moveTo(50, currentY).lineTo(550, currentY).strokeColor("#1b5e20").stroke();
-    currentY += 15;
+    // 5. Total
+    doc.moveTo(50, y).lineTo(550, y).strokeColor("#cccccc").stroke();
+    y += 15;
+    doc.font('Helvetica-Bold').fontSize(14).text(`GRAND TOTAL: Rs.${order.totalAmount}.00`, 50, y, { align: "right" });
 
-    doc.fillColor("#1b5e20").fontSize(14).text(
-      `Grand Total: LKR ${order.totalAmount}.00`, 
-      300, 
-      currentY, 
-      { width: 250, align: "right", bold: true }
-    );
-
-    doc.moveTo(50, 700).lineTo(550, 700).strokeColor("#e0e0e0").stroke();
-    doc.fillColor("#9e9e9e").fontSize(9).text(
-      "Thank you for shopping with GreenMart! Come back soon.", 
-      50, 
-      715, 
-      { align: "center" }
-    );
+    // 6. Footer
+    doc.fontSize(9).fillColor("#777777").text("Thank you for choosing GreenMart! We hope your plants grow well.", 50, 750, { align: "center" });
 
     doc.end();
-
   } catch (error: any) {
     console.error(error);
-    res.status(500).json({ message: "Failed to generate invoice PDF", error: error.message });
+    res.status(500).json({ message: "PDF generation failed", error: error.message });
   }
 };

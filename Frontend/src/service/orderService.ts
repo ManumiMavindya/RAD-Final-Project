@@ -30,3 +30,28 @@ export const getMyOrders = async () => {
 export const cancelOrder = async (orderId: string) => {
   return await axios.put(`${API_URL}/cancel/${orderId}`, {}, getAuthHeaders());
 };
+
+
+export const downloadOrderInvoice = async (orderId: string) => {
+  const user = JSON.parse(localStorage.getItem("user") || "{}");
+  
+  try {
+    const response = await axios.get(`http://localhost:5000/api/v1/orders/${orderId}/invoice`, {
+      headers: { 
+        Authorization: `Bearer ${user.accessToken}` 
+      },
+      responseType: 'blob'
+    });
+    
+    const url = window.URL.createObjectURL(new Blob([response.data], { type: 'application/pdf' }));
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', `GreenMart_Invoice_${orderId}.pdf`);
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+  } catch (error) {
+    console.error("Error downloading invoice:", error);
+    alert("Invoice download failed!");
+  }
+};
