@@ -6,7 +6,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    // Page එක reload වුණාම localstorage එකෙන් user ඉන්නවද බලනවා
     const savedUser = localStorage.getItem("user");
     if (savedUser) {
       setUser(JSON.parse(savedUser));

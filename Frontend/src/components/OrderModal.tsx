@@ -9,7 +9,7 @@ const OrderModal = ({ plant, onClose }: { plant: any, onClose: (updatedStock?: n
     try {
       await placeOrder({ ...formData, items: [{ plantId: plant._id, name: plant.name, quantity, price: plant.price }], totalAmount: plant.price * quantity });
       alert("Order Placed Successfully!");
-      onClose(plant.stock - quantity); // අලුත් ස්ටොක් එක යවනවා
+      onClose(plant.stock - quantity); 
     } catch (err) { alert("Failed to place order."); }
   };
 

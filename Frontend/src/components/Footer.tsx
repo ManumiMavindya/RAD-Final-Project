@@ -5,7 +5,7 @@ const Footer = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-8 border-b border-green-500/50">
           
-          {/* Column 1: Brand Info */}
+          {/* Brand Info */}
           <div className="space-y-3">
             <h3 className="text-2xl font-black text-white">GreenMart.</h3>
             <p className="text-green-100 text-sm leading-relaxed font-normal">
@@ -18,7 +18,7 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Column 2: Quick Links */}
+          {/* Quick Links */}
           <div className="space-y-3">
             <h4 className="font-extrabold text-white text-sm uppercase tracking-widest">Quick Links</h4>
             <ul className="space-y-2 text-green-200 text-sm font-medium">
@@ -29,7 +29,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Column 3: Categories */}
+          {/* Categories */}
           <div className="space-y-3">
             <h4 className="font-extrabold text-white text-sm uppercase tracking-widest">Categories</h4>
             <ul className="space-y-2 text-green-200 text-sm font-medium">
@@ -40,7 +40,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Column 4: Newsletter */}
+          {/* Newsletter */}
           <div className="space-y-3">
             <h4 className="font-extrabold text-white text-sm uppercase tracking-widest">Keep in Touch</h4>
             <p className="text-green-100 text-xs">Subscribe for plant care tips and deals.</p>

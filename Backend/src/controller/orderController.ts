@@ -7,7 +7,7 @@ import PDFDocument from "pdfkit";
 
 export const placeOrder = async (req: AuthRequest, res: Response) => {
   try {
-    console.log("Order Request Body:", req.body); // මේක Backend Terminal එකේ පේනවද බලන්න
+    console.log("Order Request Body:", req.body); 
 
     if (!req.user) {
       return res.status(401).json({ message: "Unauthorized!" });
@@ -15,9 +15,7 @@ export const placeOrder = async (req: AuthRequest, res: Response) => {
 
     const { customerName, shippingAddress, phone, items, totalAmount } = req.body;
 
-    // 1. PlantModel එකේ stock එක update කිරීම
     for (const item of items) {
-      // මෙතන PlantModel එක ඔයාගේ ඇත්තම පාරේ (path) තියෙනවද බලන්න
       const plant = await PlantModel.findById(item.plantId); 
       
       if (!plant) {
@@ -28,12 +26,10 @@ export const placeOrder = async (req: AuthRequest, res: Response) => {
         return res.status(400).json({ message: `Insufficient stock for ${plant.name}` });
       }
 
-      // ස්ටොක් එක අඩු කිරීම
       plant.stock -= item.quantity;
       await plant.save();
     }
 
-    // 2. Order එක save කිරීම
     const newOrder = new OrderModel({
       userId: req.user.sub,
       customerName,
@@ -49,7 +45,7 @@ export const placeOrder = async (req: AuthRequest, res: Response) => {
     res.status(201).json({ message: "Order placed successfully!", data: savedOrder });
 
   } catch (err: any) {
-    console.error("Backend Error Details:", err); // මේකෙන් තමයි හරියටම error එක පේන්නේ
+    console.error("Backend Error Details:", err); 
     res.status(500).json({ message: "Failed to place order", error: err.message });
   }
 };

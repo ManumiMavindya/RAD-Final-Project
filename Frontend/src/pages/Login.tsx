@@ -1,24 +1,22 @@
 import React, { useState } from 'react';
-import { loginUser } from '../service/authService'; // Path එක හරියටම check කරගන්න
+import { loginUser } from '../service/authService'; 
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const navigate = useNavigate();
-  const { setUser } = useAuth(); // AuthContext එකෙන් මේක ගන්නවා
+  const { setUser } = useAuth();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      // loginUser එකෙන් user data එක එනවා (token එකත් එක්ක)
       const data = await loginUser(formData);
       
-      // Context එකට user ව දානවා (මේකෙන් Navbar එක auto update වෙනවා)
       setUser(data); 
       
       alert("Login Successful!");
-      navigate("/"); // Home page එකට redirect කරනවා
+      navigate("/");
     } catch (err) {
       console.error(err);
       alert("Invalid Credentials!");

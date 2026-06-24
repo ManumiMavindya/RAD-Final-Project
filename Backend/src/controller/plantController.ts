@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import { PlantModel } from "../models/plantModel";
 import mongoose from "mongoose";
-// import { error } from "node:console";
 
 export const savePlant = async (req: Request, res:Response) =>{
     try{
