@@ -1,48 +1,58 @@
 import { Response, Request } from "express";
 import { AuthRequest } from "../middleware/auth";
 import { OrderModel } from "../models/orderModel";
+import { PlantModel } from "../models/plantModel";
 import { sendOrderConfirmationEmail } from "../utils/sendEmail"; 
 import PDFDocument from "pdfkit";
 
 export const placeOrder = async (req: AuthRequest, res: Response) => {
   try {
+    console.log("Order Request Body:", req.body); // මේක Backend Terminal එකේ පේනවද බලන්න
+
     if (!req.user) {
-      return res.status(401).json({ message: "Unauthorized! Please login first." });
+      return res.status(401).json({ message: "Unauthorized!" });
     }
 
     const { customerName, shippingAddress, phone, items, totalAmount } = req.body;
 
-    // readable invoice id generate
-    const randomNumber = Math.floor(100000 + Math.random() * 900000);
-    const currentYear = new Date().getFullYear();
-    const uniqueInvoiceNumber = `INV-${currentYear}-${randomNumber}`;
+    // 1. PlantModel එකේ stock එක update කිරීම
+    for (const item of items) {
+      // මෙතන PlantModel එක ඔයාගේ ඇත්තම පාරේ (path) තියෙනවද බලන්න
+      const plant = await PlantModel.findById(item.plantId); 
+      
+      if (!plant) {
+        return res.status(404).json({ message: `Plant with ID ${item.plantId} not found!` });
+      }
 
+      if (plant.stock < item.quantity) {
+        return res.status(400).json({ message: `Insufficient stock for ${plant.name}` });
+      }
+
+      // ස්ටොක් එක අඩු කිරීම
+      plant.stock -= item.quantity;
+      await plant.save();
+    }
+
+    // 2. Order එක save කිරීම
     const newOrder = new OrderModel({
-      invoiceNumber: uniqueInvoiceNumber,
-      userId: req.user.sub, 
+      userId: req.user.sub,
       customerName,
       shippingAddress,
       phone,
       items,
-      totalAmount
+      totalAmount,
+      invoiceNumber: "INV-" + Date.now() + Math.floor(Math.random() * 1000)
     });
 
     const savedOrder = await newOrder.save();
 
-    if (req.user && req.user.email) {
-      sendOrderConfirmationEmail(req.user.email, savedOrder); 
-  }
+    res.status(201).json({ message: "Order placed successfully!", data: savedOrder });
 
-    res.status(201).json({
-      message: "Order placed successfully..!",
-      data: savedOrder
-    });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: "Failed to place order", error: err });
+  } catch (err: any) {
+    console.error("Backend Error Details:", err); // මේකෙන් තමයි හරියටම error එක පේන්නේ
+    res.status(500).json({ message: "Failed to place order", error: err.message });
   }
 };
-
 export const getMyOrders = async (req: AuthRequest, res: Response) => {
   try {
     if (!req.user) {

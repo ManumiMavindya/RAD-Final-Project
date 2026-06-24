@@ -1,7 +1,7 @@
 import { useState } from "react"
 import Footer from "../components/Footer"
 
-const Home = () => {
+const Home = () => {  
   const [categories] = useState([
     { name: "Indoor Jungle", tag: "Indoor Jungle", img: "https://images.unsplash.com/photo-1545241047-6083a3684587?q=80&w=500" },
     { name: "Pet-Friendly", tag: "Pet-Friendly", img: "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?q=80&w=500" },

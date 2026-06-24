@@ -24,7 +24,7 @@ const OrderSchema: Schema = new Schema(
     invoiceNumber: { 
       type: String, 
       unique: true, 
-      required: true },
+      required: false },
 
     userId: { 
       type: Schema.Types.ObjectId, 
