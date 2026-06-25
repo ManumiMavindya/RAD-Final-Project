@@ -36,7 +36,6 @@ const MyAccount = () => {
         
         <div className="space-y-4">
           {orders.map((order: any) => (
-            // Hover Effect එක මෙතන තියෙන්නේ (hover:-translate-y-1 hover:shadow-xl)
             <div key={order._id} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
               
               <div className="flex justify-between items-center mb-4">
@@ -49,7 +48,6 @@ const MyAccount = () => {
                 </div>
               </div>
 
-              {/* Items & Shipping Details */}
               <div className="bg-gray-50 rounded-xl p-4 mb-4 grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <p className="text-[10px] font-black text-gray-400 uppercase mb-1">Items</p>
