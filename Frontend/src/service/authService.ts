@@ -7,11 +7,11 @@ export const registerUser = async (userData: any) => {
 };
 
 export const loginUser = async (credentials: any) => {
-  const response = await axios.post("http://localhost:5000/api/v1/auth/login", credentials);
+  const response = await axios.post(API_URL + "login", credentials);
   
   if (response.data && response.data.data) {
-    localStorage.setItem("user", JSON.stringify(response.data.data));
-    return response.data.data;
+    return response.data; 
+    
   }
   throw new Error("Login failed");
 };

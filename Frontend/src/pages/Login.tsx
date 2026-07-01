@@ -8,21 +8,31 @@ const Login = () => {
   const navigate = useNavigate();
   const { setUser } = useAuth();
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    try {
-      const data = await loginUser(formData);
-      
-      setUser(data); 
-      
-      alert("Login Successful!");
-      navigate("/");
-    } catch (err) {
-      console.error(err);
-      alert("Invalid Credentials!");
-    }
-  };
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  try {
+    const response = await loginUser(formData); 
+    const userData = response.data; 
 
+    localStorage.setItem("accessToken", userData.accessToken);
+    localStorage.setItem("refreshToken", userData.refreshToken);
+    localStorage.setItem("userRole", userData.roles[0]);
+
+    setUser(userData); 
+
+    alert("Login Successful! Welcome back.");
+
+    if (userData.roles.includes("ADMIN")) {
+      navigate("/admin/dashboard");
+    } else {
+      navigate("/");
+    }
+
+  } catch (err) {
+    console.error("Login Error:", err);
+    alert("Invalid Credentials! Please try again.");
+  }
+};
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
       <form onSubmit={handleSubmit} className="bg-white p-10 rounded-3xl shadow-xl w-full max-w-md border border-gray-100">

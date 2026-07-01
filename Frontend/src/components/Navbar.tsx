@@ -43,7 +43,7 @@ const Navbar = () => {
             {isOpen && (
               <div className="absolute right-0 mt-3 w-48 bg-white rounded-2xl shadow-2xl border border-gray-100 py-2 animate-in fade-in zoom-in duration-200">
                 <Link to="/my-account" className="block px-6 py-3 text-gray-700 hover:bg-green-50 hover:text-green-700 transition" onClick={() => setIsOpen(false)}>My Profile</Link>
-                <Link to="/my-account" className="block px-6 py-3 text-gray-700 hover:bg-green-50 hover:text-green-700 transition" onClick={() => setIsOpen(false)}>Order History</Link>
+                <Link to="/order-history" className="block px-6 py-3 text-gray-700 hover:bg-green-50 hover:text-green-700 transition" onClick={() => setIsOpen(false)}>Order History</Link>
                 <div className="border-t my-1"></div>
                 <button 
                   onClick={handleLogout} 

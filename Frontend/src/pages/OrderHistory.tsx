@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { getMyOrders, downloadOrderInvoice } from '../service/orderService';
 import axios from 'axios';
 
-const MyAccount = () => {
+const OrderHistory = () => {
   const [orders, setOrders] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -86,4 +86,4 @@ const MyAccount = () => {
   );
 };
 
-export default MyAccount;
+export default OrderHistory;

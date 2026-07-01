@@ -3,18 +3,15 @@ import axios from 'axios';
 const API_URL = "http://localhost:5000/api/v1/orders";
 
 const getAuthHeaders = () => {
-  const user = JSON.parse(localStorage.getItem("user") || "{}");
+  const accessToken = localStorage.getItem("accessToken");
 
-  console.log("User Object from localStorage:", user); 
-  console.log("Token being sent:", user.accessToken);
-
-  if (!user.accessToken) {
+  if (!accessToken) {
     throw new Error("No access token found! Please login again.");
   }
   
   return {
     headers: { 
-      Authorization: `Bearer ${user.accessToken}` 
+      Authorization: `Bearer ${accessToken}` 
     }
   };
 };
@@ -33,12 +30,17 @@ export const cancelOrder = async (orderId: string) => {
 
 
 export const downloadOrderInvoice = async (orderId: string) => {
-  const user = JSON.parse(localStorage.getItem("user") || "{}");
+  const accessToken = localStorage.getItem("accessToken");
+  
+  if (!accessToken) {
+    alert("Please login to download the invoice!");
+    return;
+  }
   
   try {
     const response = await axios.get(`http://localhost:5000/api/v1/orders/${orderId}/invoice`, {
       headers: { 
-        Authorization: `Bearer ${user.accessToken}` 
+        Authorization: `Bearer ${accessToken}` 
       },
       responseType: 'blob'
     });
@@ -50,6 +52,7 @@ export const downloadOrderInvoice = async (orderId: string) => {
     document.body.appendChild(link);
     link.click();
     link.remove();
+    window.URL.revokeObjectURL(url);
   } catch (error) {
     console.error("Error downloading invoice:", error);
     alert("Invoice download failed!");
