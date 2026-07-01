@@ -10,207 +10,113 @@ const Home = () => {
   ])
 
   const [guides] = useState([
-    {
-      title: "Watering 101: The Golden Rules",
-      difficulty: "Beginner",
-      time: "5 min read",
-      desc: "Learn how to avoid overwatering and check soil moisture like a pro to keep your root systems healthy.",
-      icon: "💧",
-      bgBorder: "hover:border-blue-300",
-      tagColor: "bg-blue-100 text-blue-800"
-    },
-    {
-      title: "Mastering Sunlight & Placement",
-      difficulty: "Intermediate",
-      time: "8 min read",
-      desc: "Bright indirect light vs. low light? Find the perfect spot in your home for your indoor plants.",
-      icon: "☀️",
-      bgBorder: "hover:border-amber-300",
-      tagColor: "bg-amber-100 text-amber-800"
-    },
-    {
-      title: "The Ultimate Guide to Repotting",
-      difficulty: "Advanced",
-      time: "12 min read",
-      desc: "Step-by-step instructions on choosing the right soil mix and minimizing root shock during transit.",
-      icon: "🪴",
-      bgBorder: "hover:border-emerald-300",
-      tagColor: "bg-emerald-100 text-emerald-800"
-    }
+    { title: "Watering 101: The Golden Rules", difficulty: "Beginner", time: "5 min read", desc: "Learn how to avoid overwatering and check soil moisture like a pro to keep your root systems healthy.", icon: "💧", bgBorder: "hover:border-blue-300", tagColor: "bg-blue-100 text-blue-800" },
+    { title: "Mastering Sunlight & Placement", difficulty: "Intermediate", time: "8 min read", desc: "Bright indirect light vs. low light? Find the perfect spot in your home for your indoor plants.", icon: "☀️", bgBorder: "hover:border-amber-300", tagColor: "bg-amber-100 text-amber-800" },
+    { title: "The Ultimate Guide to Repotting", difficulty: "Advanced", time: "12 min read", desc: "Step-by-step instructions on choosing the right soil mix and minimizing root shock during transit.", icon: "🪴", bgBorder: "hover:border-emerald-300", tagColor: "bg-emerald-100 text-emerald-800" }
   ])
 
   return (
-    <div className="relative min-h-screen bg-linear-to-b from-green-100 via-emerald-100/70 to-green-50 overflow-hidden">
+    <div className="relative min-h-screen bg-neutral-50 selection:bg-green-200 overflow-hidden">
       
-      <div className="absolute top-12 -left-20 w-96 h-96 bg-emerald-400/40 rounded-full blur-2xl pointer-events-none"></div>
-      <div className="absolute top-1/3 -right-40 w-[500px] h-[500px] bg-green-500/25 rounded-full blur-3xl pointer-events-none"></div>
-      <div className="absolute bottom-20 -left-20 w-[600px] h-[600px] bg-emerald-300/30 rounded-full blur-3xl pointer-events-none"></div>
-      <div className="absolute bottom-1/3 left-1/3 w-80 h-80 bg-lime-300/20 rounded-full blur-2xl pointer-events-none"></div>
+      <div className="absolute top-0 -left-20 w-96 h-96 bg-emerald-200/50 rounded-full blur-3xl"></div>
+      <div className="absolute top-1/3 -right-40 w-[500px] h-[500px] bg-green-200/40 rounded-full blur-3xl"></div>
 
-      <div className="max-w-6xl mx-auto px-4 py-10 space-y-28 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 py-10 space-y-32 relative z-10">
         
-       {/* hero section */}
-        <div className="relative rounded-3xl overflow-hidden bg-white/70 backdrop-blur-md p-8 md:p-16 flex flex-col md:flex-row items-center justify-between border border-white/60 shadow-lg">
-          <div className="absolute top-0 right-0 w-72 h-72 bg-green-300/30 rounded-full blur-3xl pointer-events-none"></div>
-          <div className="absolute bottom-0 left-0 w-72 h-72 bg-emerald-300/30 rounded-full blur-3xl pointer-events-none"></div>
-
-          <div className="space-y-6 md:w-1/2 z-10 text-center md:text-left">
-            <span className="inline-block bg-green-200 text-green-900 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full shadow-xs">
-              🌿 Welcome to GreenMart
+        {/* Hero Section */}
+        <section className="relative rounded-[2rem] overflow-hidden bg-white/60 backdrop-blur-xl p-8 md:p-20 flex flex-col md:flex-row items-center justify-between border border-white/50 shadow-2xl shadow-green-900/5">
+          <div className="space-y-8 md:w-1/2 z-10 text-center md:text-left">
+            <span className="inline-flex items-center gap-2 bg-green-100 text-green-800 text-xs font-bold uppercase tracking-[0.2em] px-4 py-1.5 rounded-full">
+              <span className="w-2 h-2 rounded-full bg-green-600 animate-pulse"></span> GreenMart
             </span>
-            <h1 className="text-4xl md:text-6xl font-black text-gray-900 leading-tight">
+            <h1 className="text-5xl md:text-7xl font-extrabold text-neutral-900 tracking-tight leading-[1.1]">
               Vibrant Plants, <br /> 
-              <span className="text-green-700 bg-linear-to-r from-green-700 to-emerald-600 bg-clip-text text-transparent">
-                Thoughtfully
-              </span> Delivered
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-700 to-emerald-500">Thoughtfully</span> Delivered
             </h1>
-            <p className="text-gray-700 text-base md:text-lg max-w-md font-medium">
-              Bring nature into your living space with our handpicked, premium quality indoor plants.
+            <p className="text-neutral-600 text-lg md:text-xl max-w-lg font-medium leading-relaxed">
+              Bring nature into your living space with our handpicked, premium quality indoor plants, curated for your home.
             </p>
-            <div className="pt-2">
-              <button className="bg-green-600 text-white font-bold px-8 py-4 rounded-xl shadow-lg shadow-green-600/30 hover:bg-green-700 hover:shadow-xl hover:shadow-green-700/40 hover:-translate-y-0.5 transition-all duration-200 cursor-pointer">
-                Shop Now ➔
-              </button>
+            <div className="flex justify-center md:justify-start gap-4 pt-4">
+              <button className="bg-neutral-900 text-white font-bold px-8 py-4 rounded-2xl shadow-xl shadow-neutral-900/20 hover:bg-green-700 transition-all duration-300 active:scale-95">Shop Collection ➔</button>
             </div>
           </div>
           
-          <div className="md:w-1/2 mt-10 md:mt-0 flex justify-center z-10">
-            <div className="relative group">
-              <div className="absolute inset-0 bg-green-900/20 rounded-full blur-2xl transform scale-90 translate-y-4"></div>
-              <img 
-                src="https://images.unsplash.com/photo-1614594975525-e45190c55d0b?q=80&w=600" 
-                alt="Monstera Plant" 
-                className="w-80 h-80 md:w-96 md:h-96 object-cover rounded-2xl drop-shadow-2xl group-hover:scale-102 transition duration-500"
-              />
+          <div className="md:w-5/12 mt-16 md:mt-0 relative">
+            <div className="aspect-square rounded-3xl overflow-hidden shadow-2xl border-4 border-white rotate-2 hover:rotate-0 transition-transform duration-500">
+              <img src="https://images.unsplash.com/photo-1614594975525-e45190c55d0b?q=80&w=800" alt="Plant" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
             </div>
           </div>
-        </div>
+        </section>
 
-       
-       {/* catergory section */}
-        <div className="space-y-6">
+        {/* Categories Section */}
+        <section className="space-y-10">
           <div className="text-center md:text-left">
-            <h2 className="text-2xl font-bold text-gray-900 tracking-tight">Explore Categories</h2>
-            <p className="text-gray-700 text-sm font-medium">Find the perfect plant for your space</p>
+            <h2 className="text-3xl font-extrabold text-neutral-900">Explore Categories</h2>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {categories.map((cat, index) => (
-              <div 
-                key={index} 
-                className="relative rounded-2xl overflow-hidden h-64 border border-white/40 cursor-pointer shadow-md transform hover:-translate-y-1 hover:shadow-xl hover:shadow-green-600/20 hover:border-green-400 transition-all duration-300 ease-out group bg-white"
-              >
-                <img 
-                  src={cat.img} 
-                  alt={cat.name} 
-                  className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-transform duration-500 ease-out"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
-                
-                <div className="absolute bottom-6 left-6 space-y-2">
-                  <span className="bg-green-600 text-white text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-md">
-                    {cat.tag}
-                  </span>
-                  <h3 className="text-white text-2xl font-bold tracking-tight group-hover:text-green-200 transition-colors duration-300">
-                    {cat.name}
-                  </h3>
+              <div key={index} className="group relative rounded-3xl overflow-hidden h-80 border border-neutral-200 cursor-pointer shadow-sm hover:shadow-2xl transition-all duration-500">
+                <img src={cat.img} alt={cat.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/90 to-transparent"></div>
+                <div className="absolute bottom-6 left-6">
+                  <h3 className="text-white text-xl font-bold">{cat.name}</h3>
                 </div>
               </div>
             ))}
           </div>
-        </div>
+        </section>
 
-        {/* care guides section */}
-        <div id="care-guides" className="space-y-6 scroll-mt-24">
-          <div className="text-center md:text-left">
-            <h2 className="text-2xl font-bold text-gray-900 tracking-tight">Plant Care Guides</h2>
-            <p className="text-gray-700 text-sm font-medium">Expert tips to keep your green friends thriving</p>
+        {/* About Us Section - අලුතින් එකතු කළා */}
+        <section className="bg-white rounded-[2rem] p-10 md:p-16 border border-neutral-200 shadow-xl shadow-green-900/5">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
+              <h2 className="text-4xl font-extrabold text-neutral-900">Why GreenMart?</h2>
+              <p className="text-neutral-600 leading-relaxed text-lg">
+                We believe that every home deserves a touch of nature. GreenMart was founded to provide not just plants, but a seamless experience in curating your indoor sanctuary. From sustainable sourcing to expert-led care guides, we are here to support your green journey every step of the way.
+              </p>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="bg-green-50 p-4 rounded-xl border border-green-100">
+                  <h4 className="font-bold text-green-800">100% Organic</h4>
+                  <p className="text-sm text-green-700">Pesticide-free plants</p>
+                </div>
+                <div className="bg-green-50 p-4 rounded-xl border border-green-100">
+                  <h4 className="font-bold text-green-800">Fast Shipping</h4>
+                  <p className="text-sm text-green-700">Delivered within 24h</p>
+                </div>
+              </div>
+            </div>
+            <div className="rounded-[2rem] overflow-hidden shadow-2xl">
+              <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=800" alt="About Us" className="w-full h-full object-cover" />
+            </div>
           </div>
+        </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Guides Section */}
+        <section id="care-guides" className="space-y-10">
+          <div className="text-center md:text-left">
+            <h2 className="text-3xl font-extrabold text-neutral-900">Expert Care Guides</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {guides.map((guide, index) => (
-              <div 
-                key={index}
-                className={`bg-white/80 backdrop-blur-md rounded-3xl p-6 border border-white/50 shadow-md cursor-pointer transform hover:-translate-y-1.5 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group ${guide.bgBorder}`}
-              >
-                <div className="space-y-4">
-                  <div className="w-12 h-12 rounded-2xl bg-green-100/50 border border-green-200/50 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform duration-300">
+              <div key={index} className={`group bg-white rounded-[2rem] p-8 border border-neutral-100 shadow-sm hover:shadow-xl hover:border-green-200 transition-all duration-300 flex flex-col justify-between ${guide.bgBorder}`}>
+                <div className="space-y-6">
+                  <div className="w-16 h-16 rounded-3xl bg-neutral-50 flex items-center justify-center text-3xl shadow-inner border border-neutral-100 group-hover:bg-green-50 transition-colors">
                     {guide.icon}
                   </div>
-                  <div className="flex items-center gap-2">
-                    <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md ${guide.tagColor}`}>
-                      {guide.difficulty}
-                    </span>
-                    <span className="text-xs text-gray-500 font-semibold">• {guide.time}</span>
-                  </div>
-                  <div className="space-y-2">
-                    <h3 className="text-xl font-bold text-gray-900 tracking-tight group-hover:text-green-700 transition-colors duration-200">
-                      {guide.title}
-                    </h3>
-                    <p className="text-gray-700 text-sm leading-relaxed">{guide.desc}</p>
+                  <div>
+                    <span className={`text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full ${guide.tagColor}`}>{guide.difficulty}</span>
+                    <h3 className="text-2xl font-bold text-neutral-900 mt-4 leading-snug">{guide.title}</h3>
+                    <p className="text-neutral-600 mt-3 leading-relaxed text-sm">{guide.desc}</p>
                   </div>
                 </div>
-                <div className="pt-6 border-t border-gray-100 mt-6 flex items-center justify-between">
-                  <span className="text-xs font-bold text-gray-800 group-hover:text-green-700 transition-colors">Read Full Guide</span>
-                  <span className="text-gray-400 group-hover:translate-x-1 group-hover:text-green-700 transition-all duration-200">➔</span>
+                <div className="mt-8 flex items-center justify-between">
+                  <span className="text-sm font-bold text-neutral-900 group-hover:text-green-700 transition-colors">Read Guide</span>
+                  <span className="w-8 h-8 rounded-full bg-neutral-100 flex items-center justify-center group-hover:bg-green-600 group-hover:text-white transition-all">➔</span>
                 </div>
               </div>
             ))}
           </div>
-        </div>
-
-        {/* about us section */}
-        <div 
-          id="about-us" 
-          className="relative rounded-3xl overflow-hidden bg-white/70 backdrop-blur-md p-8 md:p-16 flex flex-col md:flex-row gap-12 items-center border border-white/60 shadow-lg scroll-mt-24"
-        >
-          <div className="absolute top-0 left-0 w-64 h-64 bg-green-300/20 rounded-full blur-3xl pointer-events-none"></div>
-
-          <div className="w-full md:w-2/5 flex justify-center z-10">
-            <div className="relative">
-              <div className="absolute -inset-2 bg-gradient-to-r from-green-500 to-emerald-400 rounded-3xl blur-md opacity-25"></div>
-              <img 
-                src="https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=80&w=500" 
-                alt="About GreenMart" 
-                className="w-80 h-96 object-cover rounded-2xl shadow-md border border-white"
-              />
-            </div>
-          </div>
-
-          <div className="w-full md:w-3/5 space-y-6 z-10">
-            <div className="space-y-2">
-              <span className="inline-block bg-green-200 text-green-900 text-[11px] font-bold uppercase tracking-widest px-3 py-1 rounded-md shadow-2xs">
-                🌱 Our Story
-              </span>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight">
-                Crafting Green Spaces <br />
-                <span className="text-green-700 font-black">For Healthy Living</span>
-              </h2>
-            </div>
-            
-            <p className="text-gray-700 leading-relaxed text-sm md:text-base font-medium">
-              GreenMart started with a simple mission: to connect people with nature. We believe that incorporating plants into your home or office doesn't just improve aesthetics, it boosts productivity, cleans the air, and promotes psychological well-being.
-            </p>
-
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
-              <div className="bg-white/90 p-4 rounded-xl border border-white shadow-2xs transform hover:-translate-y-1 hover:border-green-400 hover:shadow-md transition-all duration-300 cursor-pointer">
-                <span className="text-xl">⭐</span>
-                <h4 className="font-bold text-gray-900 text-sm mt-1">Premium Quality</h4>
-                <p className="text-xs text-gray-600 mt-0.5">Handpicked nursery plants.</p>
-              </div>
-              <div className="bg-white/90 p-4 rounded-xl border border-white shadow-2xs transform hover:-translate-y-1 hover:border-green-400 hover:shadow-md transition-all duration-300 cursor-pointer">
-                <span className="text-xl">📦</span>
-                <h4 className="font-bold text-gray-900 text-sm mt-1">Eco Packing</h4>
-                <p className="text-xs text-gray-600 mt-0.5">Safe & sustainable boxes.</p>
-              </div>
-              <div className="bg-white/90 p-4 rounded-xl border border-white shadow-2xs transform hover:-translate-y-1 hover:border-green-400 hover:shadow-md transition-all duration-300 cursor-pointer">
-                <span className="text-xl">🚚</span>
-                <h4 className="font-bold text-gray-900 text-sm mt-1">Fast Delivery</h4>
-                <p className="text-xs text-gray-600 mt-0.5">Guaranteed doorstep freshness.</p>
-              </div>
-            </div>
-          </div>
-        </div>
+        </section>
 
       </div>
       <Footer />
