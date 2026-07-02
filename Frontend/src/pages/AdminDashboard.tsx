@@ -30,7 +30,7 @@ const AdminDashboard = () => {
   const { cardStats, chartData } = stats;
 
   return (
-    <AdminLayout> {/* 2. මුළු පිටුවම Layout එක ඇතුලට ගන්න */}
+    <AdminLayout> 
       <div className="space-y-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           <StatCard title="Revenue" value={`LKR ${cardStats.totalRevenue}`} icon={<DollarSign className="text-green-600"/>} />

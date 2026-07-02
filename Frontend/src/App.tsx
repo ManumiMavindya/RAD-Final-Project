@@ -8,8 +8,9 @@ import Register from "./pages/Register"
 import OrderHistory from "./pages/OrderHistory";
 import { AuthProvider } from './context/AuthContext';
 import AdminDashboard from "./pages/AdminDashboard";
-import Plants from "./pages/Admin/Plants"; // ෆයිල් එක තියෙන තැන හරියට බලන්න 
+import Plants from "./pages/Admin/Plants"; 
 import Users from "./pages/Admin/Users"
+import Orders from "./pages/Admin/Orders"
 
 const AdminRoute = ({ children }: { children: JSX.Element }) => {
   const role = localStorage.getItem("userRole");
@@ -40,7 +41,6 @@ function App() {
     } 
   />
 
-  {/* Plants Route එක (වෙනම එකක්) */}
   <Route 
     path="/admin/plants" 
     element={
@@ -58,6 +58,8 @@ function App() {
     </AdminRoute>
   } 
 />
+
+<Route path="/admin/orders" element={<AdminRoute><Orders /></AdminRoute>} />
         </Routes>
       </Router>
     </AuthProvider>

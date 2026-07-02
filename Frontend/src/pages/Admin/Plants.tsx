@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import AdminLayout from '../../components/AdminLayout';
-import PlantModal from './PlantModal'; // අලුත් Modal එක
+import PlantModal from './PlantModal';
 
 const Plants = () => {
   const [plants, setPlants] = useState([]);
