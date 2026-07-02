@@ -23,7 +23,6 @@ const Home = () => {
 
       <div className="max-w-7xl mx-auto px-6 py-10 space-y-32 relative z-10">
         
-        {/* Hero Section */}
         <section className="relative rounded-[2rem] overflow-hidden bg-white/60 backdrop-blur-xl p-8 md:p-20 flex flex-col md:flex-row items-center justify-between border border-white/50 shadow-2xl shadow-green-900/5">
           <div className="space-y-8 md:w-1/2 z-10 text-center md:text-left">
             <span className="inline-flex items-center gap-2 bg-green-100 text-green-800 text-xs font-bold uppercase tracking-[0.2em] px-4 py-1.5 rounded-full">
@@ -48,7 +47,6 @@ const Home = () => {
           </div>
         </section>
 
-        {/* Categories Section */}
         <section className="space-y-10">
           <div className="text-center md:text-left">
             <h2 className="text-3xl font-extrabold text-neutral-900">Explore Categories</h2>
@@ -66,7 +64,6 @@ const Home = () => {
           </div>
         </section>
 
-        {/* About Us Section - අලුතින් එකතු කළා */}
         <section className="bg-white rounded-[2rem] p-10 md:p-16 border border-neutral-200 shadow-xl shadow-green-900/5">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
@@ -91,7 +88,6 @@ const Home = () => {
           </div>
         </section>
 
-        {/* Guides Section */}
         <section id="care-guides" className="space-y-10">
           <div className="text-center md:text-left">
             <h2 className="text-3xl font-extrabold text-neutral-900">Expert Care Guides</h2>

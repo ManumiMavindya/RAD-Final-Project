@@ -40,7 +40,6 @@ const PlantDetails = () => {
           
           <div className="bg-white rounded-[2.5rem] p-8 md:p-12 shadow-sm border border-neutral-100 flex flex-col md:flex-row gap-12">
             
-            {/* Image Container */}
             <div className="w-full md:w-5/12">
               <div className="relative rounded-[2rem] overflow-hidden h-[500px]">
                 <img src={plant.imageURL} alt={plant.name} className="w-full h-full object-cover" />
@@ -50,7 +49,6 @@ const PlantDetails = () => {
               </div>
             </div>
 
-            {/* Content Container */}
             <div className="w-full md:w-7/12 flex flex-col justify-center">
               <h1 className="text-5xl md:text-6xl font-black text-neutral-900 tracking-tighter mb-4">{plant.name}</h1>
               <p className="text-3xl font-black text-green-600 mb-8">${plant.price}</p>
@@ -65,7 +63,6 @@ const PlantDetails = () => {
                  <div className="bg-green-50 px-6 py-3 rounded-2xl font-bold text-sm text-green-700">Free Shipping</div>
               </div>
 
-              {/* Action Buttons */}
               <div className="flex flex-col gap-4">
                 <button 
                   onClick={() => setShowModal(true)} 
@@ -94,7 +91,6 @@ const PlantDetails = () => {
         </div>
       </div>
 
-      {/* Chatbot Popup */}
       {showChat && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm p-4">
           <div className="bg-white p-4 rounded-[2rem] shadow-2xl w-full max-w-sm relative">

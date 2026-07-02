@@ -30,7 +30,6 @@ const AdminDashboard = () => {
 
   return (
     <div className="space-y-8">
-      {/* 1. Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         <StatCard title="Revenue" value={`$${cardStats.totalRevenue}`} icon={<DollarSign className="text-green-600"/>} />
         <StatCard title="Orders" value={cardStats.totalOrders} icon={<ShoppingCart className="text-blue-600"/>} />
@@ -38,7 +37,6 @@ const AdminDashboard = () => {
         <StatCard title="Users" value={cardStats.totalUsers} icon={<Users className="text-purple-600"/>} />
       </div>
 
-      {/* 2. Revenue Chart */}
       <div className="bg-white p-6 rounded-2xl shadow-sm border">
         <h3 className="text-lg font-bold mb-6">Monthly Revenue Overview</h3>
         <div className="h-[300px]">

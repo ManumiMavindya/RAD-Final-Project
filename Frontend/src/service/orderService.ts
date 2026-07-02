@@ -5,7 +5,6 @@ const API_URL = "http://localhost:5000/api/v1/orders";
 const getAuthHeaders = () => {
   const accessToken = localStorage.getItem("accessToken");
 
-  // මෙතනදී ලොග් කරලා බලන්න මොකක්ද එන්නේ කියලා
   console.log("Token from localStorage:", accessToken);
 
   if (!accessToken || accessToken === "undefined") {

@@ -5,7 +5,6 @@ const Footer = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
           
-          {/* Brand Info */}
           <div className="col-span-1 md:col-span-1 space-y-4">
             <h3 className="text-xl font-bold text-white">GreenMart.</h3>
             <p className="text-sm leading-relaxed">
@@ -13,7 +12,6 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Links */}
           <div className="space-y-4">
             <h4 className="text-white font-bold text-xs uppercase tracking-widest">Navigation</h4>
             <ul className="space-y-3 text-sm">
@@ -23,7 +21,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Categories */}
           <div className="space-y-4">
             <h4 className="text-white font-bold text-xs uppercase tracking-widest">Collections</h4>
             <ul className="space-y-3 text-sm">
@@ -33,7 +30,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Newsletter */}
           <div className="space-y-4">
             <h4 className="text-white font-bold text-xs uppercase tracking-widest">Newsletter</h4>
             <p className="text-xs">Get expert care tips.</p>
@@ -48,7 +44,6 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Bottom Bar */}
         <div className="pt-8 border-t border-neutral-800 flex flex-col md:flex-row justify-between items-center text-xs gap-4">
           <p>© 2026 GreenMart. All rights reserved.</p>
           <div className="flex gap-8">

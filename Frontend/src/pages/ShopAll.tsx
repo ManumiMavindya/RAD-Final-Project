@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from 'react-router-dom';
-import Footer from "../components/Footer" // Footer එක import කරන්න
+import Footer from "../components/Footer" 
 
 const ShopAll = () => {
   const navigate = useNavigate();
@@ -39,13 +39,11 @@ const ShopAll = () => {
       <div className="flex-grow py-16 px-6">
         <div className="max-w-7xl mx-auto">
           
-          {/* Header Section */}
           <div className="text-center mb-16">
             <h1 className="text-5xl md:text-6xl font-black text-neutral-900 mb-4 tracking-tight">Botanical Collection</h1>
             <p className="text-neutral-500 text-lg">Curated plants, delivered to your doorstep.</p>
           </div>
           
-          {/* Search & Filter */}
           <div className="flex flex-col md:flex-row gap-4 mb-12 max-w-2xl mx-auto">
             <input 
               type="text" 
@@ -64,7 +62,6 @@ const ShopAll = () => {
             </select>
           </div>
 
-          {/* Product Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {currentItems.map((p) => (
               <div key={p._id} className="group bg-white p-3 rounded-[2rem] border border-neutral-100 shadow-sm hover:shadow-xl hover:shadow-green-100/50 transition-all duration-500">
@@ -87,7 +84,6 @@ const ShopAll = () => {
             ))}
           </div>
 
-          {/* Pagination */}
           <div className="flex justify-center items-center gap-4 mt-20">
             <button 
               disabled={currentPage === 1}
@@ -108,7 +104,6 @@ const ShopAll = () => {
         </div>
       </div>
       
-      {/* Footer එක පේජ් එකේ අන්තිමටම එනවා */}
       <Footer />
     </div>
   )
