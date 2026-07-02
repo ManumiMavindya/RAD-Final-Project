@@ -7,15 +7,14 @@ const Users = () => {
 
   useEffect(() => { fetchUsers(); }, []);
 
- const fetchUsers = async () => {
-    const token = localStorage.getItem("accessToken"); // Token එක ගන්න
+const fetchUsers = async () => {
+    const token = localStorage.getItem("accessToken");
     try {
       const res = await axios.get("http://localhost:5000/api/v1/auth/get-all-customers", {
-        headers: { 
-          Authorization: `Bearer ${token}` // මේක අනිවාර්යයෙන්ම දාන්න ඕනේ
-        }
+        headers: { Authorization: `Bearer ${token}` }
       });
-      setUsers(res.data);
+      
+      setUsers(res.data.data); 
     } catch (error) {
       console.error("Error fetching users:", error);
     }
