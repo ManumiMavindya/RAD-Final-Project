@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import AdminLayout from '../../components/AdminLayout';
-import OrderModal from '../../components/OrderModal'; // අලුතින් හදන Modal එක
+import OrderModal from '../../components/OrderModal'; 
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
